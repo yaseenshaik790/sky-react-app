@@ -1,18 +1,9 @@
-/*
-<div id = "parent">
-    <div i = "child">
-        <h1 I'm h1 Tag />
-    <div>
-    <div i = "child2">
-        <h1 I'm h1 Tag />
-    <div>
-<div>
-React.createElement(Object)  converts HTML(Browser understands)
-*/
+import React from "react";
+import ReactDOM from "react-dom/client";
 
 const heading = React.createElement("div", { id: "parent" }, [
   React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "I'm h1 tag"),
+    React.createElement("h1", {}, "I'm Yas tag"),
     React.createElement("h2", {}, "I'm h2 tag"),
   ]),
   React.createElement("div", { id: "child2" }, [

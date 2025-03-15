@@ -20,3 +20,44 @@
 - HTTPs
 - Tree Shaking - remove unsued code
 - DIff dev and prod bundles
+
+#Food Delivery App
+/\*\*\*
+
+- Header
+- - Logo
+- - Nav bar
+- Body
+- - Search
+- - Restro Cards
+- -> Image
+- -> Rest name
+- -> Rating
+- -> Delivery time
+- -> Cusins
+- Footer
+- -Links
+- -address
+  \*/
+
+# Default Export/Import
+
+export default Componenet;
+import Component from "path";
+
+# Named Export/Import;
+
+export Component / export const URL ="https://ajha";
+import {Component} from "path"; /import {URL} from "path";
+
+# useState [ It is hook provided by React]
+
+- Its just normal JS function with powerful state change of component
+- Whenever React variable updated React re render the application Virtual DOM
+
+# Virtual DOM
+
+- It is representation of actual DOM. React will find the find the diff between Actual DOM and Virtual Dom then it will update UI
+
+- Reconcialation ALgo [React Fibr] - Introduced in React 16. Now we are in 18 version
+- Link docu [https://github.com/acdlite/react-fiber-architecture]

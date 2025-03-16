@@ -55,9 +55,17 @@ import {Component} from "path"; /import {URL} from "path";
 - Its just normal JS function with powerful state change of component
 - Whenever React variable updated React re render the application Virtual DOM
 
+-Whenever state variables update, recat triggers a reconciaalation cycle( re-render the react component)
+
 # Virtual DOM
 
 - It is representation of actual DOM. React will find the find the diff between Actual DOM and Virtual Dom then it will update UI
 
 - Reconcialation ALgo [React Fibr] - Introduced in React 16. Now we are in 18 version
 - Link docu [https://github.com/acdlite/react-fiber-architecture]
+
+# useEffect
+
+- If anything (API Calls) called after rendering Components. This piece of code should write inside useEffect
+- Whenever We Open Web browser. Loads Page -> Loads Components [UI] -> Make UI Calls -> Re render [Virtual DOM]
+- useEffect called once Component rendered. It is better UX design

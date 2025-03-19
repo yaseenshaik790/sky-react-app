@@ -69,3 +69,6 @@ import {Component} from "path"; /import {URL} from "path";
 - If anything (API Calls) called after rendering Components. This piece of code should write inside useEffect
 - Whenever We Open Web browser. Loads Page -> Loads Components [UI] -> Make UI Calls -> Re render [Virtual DOM]
 - useEffect called once Component rendered. It is better UX design
+- If no dependency Array => useEffect called on every render
+- If dependency array is empty =[] => useEffect called on initial render(just once)
+- If dependency array with value => useEffect called on userLogin updated.

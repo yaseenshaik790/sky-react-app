@@ -72,3 +72,11 @@ import {Component} from "path"; /import {URL} from "path";
 - If no dependency Array => useEffect called on every render
 - If dependency array is empty =[] => useEffect called on initial render(just once)
 - If dependency array with value => useEffect called on userLogin updated.
+
+# Optimization Of Perfoemance
+
+- Chunking
+- Dynamic bundling
+- Code SPlitting
+- lazy loading
+- on demand loading

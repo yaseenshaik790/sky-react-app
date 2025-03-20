@@ -3,11 +3,15 @@ import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { RESTAURENTS_LIST_API } from "../utils/constants";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  const onlineStatus = useOnlineStatus();
+
   useEffect(() => {
     getRestaurants();
   }, []);
@@ -15,7 +19,6 @@ const Body = () => {
   const getRestaurants = async function () {
     const data = await fetch(RESTAURENTS_LIST_API);
     const json = await data.json();
-    console.log(json);
     setRestaurantList(
       json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
@@ -25,7 +28,13 @@ const Body = () => {
         ?.restaurants
     );
   };
-
+  if (onlineStatus === false) {
+    return (
+      <h1>
+        Looks like something went wrong! Pls check your internet connection
+      </h1>
+    );
+  }
   return restaurantList.length === 0 ? (
     <Shimmer />
   ) : (
@@ -66,7 +75,6 @@ const Body = () => {
           Top Rated Restaurents
         </button>
       </div>
-
       <div className="res-container">
         {filteredRestaurantList.map((restaurant) => (
           <Link

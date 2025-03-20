@@ -2,12 +2,17 @@ import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-import { RESTAURENTS_LIST_API } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import useRestaurantList from "../utils/useRestaurantList";
 
 const Body = () => {
-  const [restaurantList, setRestaurantList] = useState([]);
-  const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
+  const {
+    restaurantList,
+    filteredRestaurantList,
+    setFilteredRestaurantList,
+    getRestaurants,
+  } = useRestaurantList();
+
   const [searchText, setSearchText] = useState("");
 
   const onlineStatus = useOnlineStatus();
@@ -16,19 +21,7 @@ const Body = () => {
     getRestaurants();
   }, []);
 
-  const getRestaurants = async function () {
-    const data = await fetch(RESTAURENTS_LIST_API);
-    const json = await data.json();
-    setRestaurantList(
-      json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    setFilteredRestaurantList(
-      json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-  };
-  if (onlineStatus === false) {
+  if (!onlineStatus) {
     return (
       <h1>
         Looks like something went wrong! Pls check your internet connection

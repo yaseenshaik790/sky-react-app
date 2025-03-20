@@ -1,24 +1,35 @@
-//import { useEffect, useState } from "react";
-//import { RESTAURENTS_LIST_API } from "./constants";
+import { useEffect, useState } from "react";
+import { RESTAURENTS_LIST_API } from "./constants";
 
 const useRestaurantList = () => {
   const [restaurantList, setRestaurantList] = useState([]);
+  const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
 
-  /* useEffect(() => {
+  useEffect(() => {
     getRestaurants();
   }, []);
 
-  const getRestaurants = async function () {
-    const data = await fetch(RESTAURENTS_LIST_API);
-    const json = await data.json();
+  const getRestaurants = async () => {
+    try {
+      const data = await fetch(RESTAURENTS_LIST_API);
+      const json = await data.json();
+      const restaurants =
+        json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || [];
 
-    setRestaurantList(
-      json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-  }; */
+      setRestaurantList(restaurants);
+      setFilteredRestaurantList(restaurants);
+    } catch (error) {
+      console.error("Error fetching restaurants:", error);
+    }
+  };
 
-  return restaurantList;
+  return {
+    restaurantList,
+    filteredRestaurantList,
+    setFilteredRestaurantList,
+    getRestaurants,
+  };
 };
 
 export default useRestaurantList;

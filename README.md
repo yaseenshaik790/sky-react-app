@@ -80,3 +80,13 @@ import {Component} from "path"; /import {URL} from "path";
 - Code SPlitting
 - lazy loading
 - on demand loading
+
+# Adding CSS
+
+- Normal CSS [Regular CSS writing]
+- Sass And Sess [Bit Advance]
+- component Style CSS [Advance]
+- Material UI / Boostrap UI/ Chakra UI / Ant Design[Frameworks and Libraries of prebuild CSS]
+- Tailwind CSS
+
+# Tailwind CSS

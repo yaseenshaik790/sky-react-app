@@ -14,30 +14,33 @@ const Header = () => {
   console.log("Header rendered!");
 
   return (
-    <div className="header">
-      <div className="logo">
+    <div className="flex justify-between bg-pink-100 shadow-indigo-100">
+      <div className="w-25">
         <img src={CLOUD_LOGO_URL}></img>
       </div>
-      <div className="nav-bar">
-        <ul>
-          <li style={{ color: onlineStatus ? "green" : "red" }}>
+      <div className="flex items-center">
+        <ul className="flex space-x-6 text-gray-800 font-semibold p-4 m-5">
+          <li
+            className="text-green-600 font-bold"
+            style={{ color: onlineStatus ? "green" : "red" }}
+          >
             {onlineStatus ? "Online" : "Offline"}
           </li>
-          <li>
+          <li className="hover:text-pink-600 cursor-pointer">
             <Link to="">Home</Link>
           </li>
-          <li>
+          <li className="hover:text-pink-600 cursor-pointer">
             <a href="about">About Us</a>
           </li>
-          <li>
+          <li className="hover:text-pink-600 cursor-pointer">
             <Link to="contact">Contact Us</Link>
           </li>
-          <li>
+          <li className="hover:text-pink-600 cursor-pointer">
             <Link to="grocery">Grocery</Link>
           </li>
-          <li>Cart</li>
+          <li className="hover:text-pink-600 cursor-pointer">Cart</li>
           <button
-            className="login"
+            className="px-4 py-2 bg-pink-500 text-white font-semibold rounded-full shadow-lg hover:bg-pink-600 transition-all duration-300 ease-in-out transform hover:scale-105"
             onClick={() => {
               userLogin === "Login"
                 ? setUserLogin("Logout")

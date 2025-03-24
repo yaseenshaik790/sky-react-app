@@ -1,6 +1,7 @@
 import { Component } from "react";
 import User from "./User";
 import UserClass from "./UserClass";
+import UserContext from "../utils/UserContext";
 
 /* const About = () => {
   return (
@@ -45,6 +46,11 @@ class About extends Component {
       <div>
         <h1>About Us</h1>
         <h1>Food delivery App!</h1>
+        <h1>
+          <UserContext.Consumer>
+            {({ loggedInUser }) => <h1>{loggedInUser}</h1>}
+          </UserContext.Consumer>
+        </h1>
         <img src={avatarUrl}></img>
         <UserClass name={name} location={location}></UserClass>
       </div>

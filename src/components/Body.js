@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import { useContext, useEffect, useState } from "react";
+import RestaurantCard, { withRestaurantCardPromoted } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurantList from "../utils/useRestaurantList";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const {
@@ -15,7 +16,10 @@ const Body = () => {
 
   const [searchText, setSearchText] = useState("");
 
+  const { userName, setUserName } = useContext(UserContext);
+
   const onlineStatus = useOnlineStatus();
+  const RestaurantCardPromoted = withRestaurantCardPromoted(RestaurantCard);
 
   useEffect(() => {
     getRestaurants();
@@ -67,8 +71,18 @@ const Body = () => {
               );
             }}
           >
-            Top Rated Restaurents
+            Top Rated Restaurants
           </button>
+        </div>
+        <div className="flex items-center">
+          <label className="items-center"> User Name </label>
+          <input
+            value={userName}
+            className="p-1 border border-b-gray-400"
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          ></input>
         </div>
       </div>
       <div className="flex flex-wrap">
@@ -77,7 +91,11 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurant/" + restaurant.info.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {restaurant.info.avgRating > 4.5 ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>

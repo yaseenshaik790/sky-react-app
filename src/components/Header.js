@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CLOUD_LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [userLogin, setUserLogin] = useState("Login");
 
   const onlineStatus = useOnlineStatus();
+  const { loggedInUser } = useContext(UserContext);
 
   useEffect(() => {
     console.log("usEffect() rendered!");
@@ -40,7 +42,7 @@ const Header = () => {
           </li>
           <li className="hover:text-pink-600 cursor-pointer">Cart</li>
           <button
-            className="px-4 py-2 bg-pink-500 text-white font-semibold rounded-full shadow-lg hover:bg-pink-600 transition-all duration-300 ease-in-out transform hover:scale-105"
+            className="px-4 bg-pink-500 text-white font-semibold rounded-full shadow-lg hover:bg-pink-600 transition-all duration-300 ease-in-out transform hover:scale-105"
             onClick={() => {
               userLogin === "Login"
                 ? setUserLogin("Logout")
@@ -49,6 +51,7 @@ const Header = () => {
           >
             {userLogin}
           </button>
+          <li className="hover:text-pink-600 cursor-pointer">{loggedInUser}</li>
         </ul>
       </div>
     </div>

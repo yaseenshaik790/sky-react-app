@@ -89,4 +89,6 @@ import {Component} from "path"; /import {URL} from "path";
 - Material UI / Boostrap UI/ Chakra UI / Ant Design[Frameworks and Libraries of prebuild CSS]
 - Tailwind CSS
 
-# Tailwind CSS
+# HIgher Order Component
+
+- It is function which takes Component as argument and return enhanced component
